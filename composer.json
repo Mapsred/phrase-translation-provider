@@ -1,0 +1,34 @@
+{
+    "name": "mapsred/phrase-translation-provider",
+    "type": "symfony-bridge",
+    "description": "Symfony Phrase Translation Provider Bridge",
+    "keywords": ["phrase", "translation", "provider"],
+    "homepage": "https://symfony.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "François Mathieu",
+            "homepage": "https://github.com/mapsred"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.2",
+        "symfony/config": "5.3.*",
+        "symfony/http-client": "5.3.*",
+        "symfony/translation": "5.3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": { "Symfony\\Component\\Translation\\Bridge\\Phrase\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "minimum-stability": "dev"
+}

@@ -20,7 +20,7 @@ class PhraseProviderTest extends ProviderTestCase
 {
     public function createProvider(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint): ProviderInterface
     {
-        return new PhraseProvider($client, $loader, $logger, $defaultLocale, $endpoint);
+        return new PhraseProvider($client, $loader, $logger, $endpoint);
     }
 
     public function toStringProvider(): iterable

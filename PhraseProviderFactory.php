@@ -14,24 +14,11 @@ final class PhraseProviderFactory extends AbstractProviderFactory
 {
     private const HOST = 'api.phrase.com';
 
-    /** @var LoaderInterface */
-    private $loader;
-
-    /** @var HttpClientInterface */
-    private $client;
-
-    /** @var LoggerInterface */
-    private $logger;
-
-    /** @var string */
-    private $defaultLocale;
-
-    public function __construct(HttpClientInterface $client, LoggerInterface $logger, string $defaultLocale, LoaderInterface $loader)
-    {
-        $this->client = $client;
-        $this->logger = $logger;
-        $this->defaultLocale = $defaultLocale;
-        $this->loader = $loader;
+    public function __construct(
+        private HttpClientInterface $client,
+        private LoggerInterface $logger,
+        private LoaderInterface $loader
+    ) {
     }
 
 
@@ -54,7 +41,7 @@ final class PhraseProviderFactory extends AbstractProviderFactory
             ],
         ]);
 
-        return new PhraseProvider($client, $this->loader, $this->logger, $this->defaultLocale, $endpoint);
+        return new PhraseProvider($client, $this->loader, $this->logger, $endpoint);
     }
 
     protected function getSupportedSchemes(): array

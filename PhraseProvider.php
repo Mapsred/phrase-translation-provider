@@ -12,19 +12,12 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class PhraseProvider implements ProviderInterface
 {
-    private $client;
-    private $loader;
-    private $logger;
-    private $defaultLocale;
-    private $endpoint;
-
-    public function __construct(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint)
-    {
-        $this->client = $client;
-        $this->loader = $loader;
-        $this->logger = $logger;
-        $this->defaultLocale = $defaultLocale;
-        $this->endpoint = $endpoint;
+    public function __construct(
+        private HttpClientInterface $client,
+        private LoaderInterface $loader,
+        private LoggerInterface $logger,
+        private string $endpoint
+    ) {
     }
 
 
@@ -112,7 +105,6 @@ final class PhraseProvider implements ProviderInterface
         $header = $response->getHeaders()['link'][0];
         $headerLinks = explode(',', $header);
 
-        $links = [];
         foreach ($headerLinks as $headerLink) {
             if (true === str_contains($headerLink, 'rel=next')) {
                 preg_match('/<https:\/\/.*\?page=([0-9]+)/', $headerLink, $matches);

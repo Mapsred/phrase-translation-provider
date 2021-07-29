@@ -34,6 +34,6 @@ class PhraseProviderFactoryTest extends ProviderFactoryTestCase
 
     public function createFactory(): ProviderFactoryInterface
     {
-        return new PhraseProviderFactory($this->getClient(), $this->getLogger(), $this->getDefaultLocale(), $this->getLoader());
+        return new PhraseProviderFactory($this->getClient(), $this->getLogger(), $this->getLoader());
     }
 }
